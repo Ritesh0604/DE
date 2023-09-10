@@ -1,12 +1,11 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home/Home";
-import MainHeader from "./components/MainNavigation/MainHeader";
 import Root from "./pages/Root";
 import Block from "./components/Block/Block";
 import Login from "./components/Login/Login";
 import Form from "./components/Form/Form";
-
+import Department from "./components/Department/Department";
 const router = createBrowserRouter(
     [{
         path: '/',
@@ -16,19 +15,14 @@ const router = createBrowserRouter(
             {path:'navigate',element: <Block/>},
             {path:'login',element: <Login/>},
             {path:'form',element: <Form/>},
-            
+            {path: 'navigate/:navigateBlock',element:<Department/>}
         ]
     }
 ]);
 
 function App() {
     return (
-        // <React.Fragment>
-        //     <MainHeader />
-        //     <main>
-        //         <Home />
-        //     </main>
-        // </React.Fragment>
+
         <RouterProvider router={router}></RouterProvider>
     );
 }

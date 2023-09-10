@@ -10,4 +10,68 @@
   padding: 3rem;
   margin: 2rem auto;
   text-align: center;
+  align-items: center;
+}
+.btn{
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background-color: rgb(11, 11, 116);
+  color: white;
+  padding: 0.75rem 3rem;
+  display: flex;
+  justify-content:center;
+  border-radius: 25px;
+  font-weight: bold;
+  align-content: center;
+}
+.btn {
+	
+	-webkit-font-smoothing: antialiased;
+	position: relative;
+	
+	padding-right: 4.7em;
+	
+	transition: .2s;
+	&:before,
+	&:after {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		padding-top: inherit;
+		padding-bottom: inherit;
+		width: 2.8em;
+		content: "\00a0";
+		font-family: 'FontAwesome', sans-serif;
+		font-size: 1.2em;
+		text-align: center;
+		
+		transition: .2s;
+		transform-origin: 50% 60%;
+	}
+	
+}
+.search {
+	&:after {
+		content:"\f002";
+	}
+	&:hover:after {
+		-webkit-animation: none;
+		-webkit-transform: scale(1.4);
+		animation: none;
+		transform: scale(1.4);
+	}
+}
+
+
+.btn:hover{
+  background-color: rgb(11, 11, 90);
+
+}
+
+.forButton{
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }

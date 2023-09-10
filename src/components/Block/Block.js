@@ -1,46 +1,39 @@
-import './Block.css'
-const arr = ['A', 'B', 'C', 'D','E','F','G','H','I'];
+import "./Block.css";
+import { Link } from "react-router-dom";
+const arr = [
+  { id: "A", name: "Student Section" },
+  { id: "B", name: "Information Technology" },
+  { id: "C", name: "Electrical Engineering" },
+  { id: "D", name: "Computer Engineering" },
+  { id: "E", name: "Gym-Khana" },
+  { id: "F", name: "Electronics and Communication" },
+  { id: "G", name: "Power Electronics" },
+  { id: "H", name: "Chemical Engineering" },
+  { id: "I", name: "Chemical Engineering" },
+  { id: "J", name: "Student Section" },
+  { id: "K", name: "Instrumentation and control" },
+  { id: "L", name: "Electrical Engineering" },
+  { id: "M", name: "Mechanical Engineering" },
+  { id: "N", name: "Civil Engineering" },
+  { id: "W", name: "Workshop" },
+];
+
 const Block = () => {
-   const listt= arr.map((dep)=>
-         <div className = "col-xl-3 col-md-4 col-sm">
-             <div className="block">
-                    <h3 > {dep}</h3>
-                </div>
-                </div>
-    )
-    return (
-         <div className="cleck" >
-
-
-        <div className="row">{listt}</div>
-
-        {/* //     <div className="row">
-        //         {/* <div className="col">
-        //             <h3> A</h3>
-        //         </div> */}
-
-
-        {/* //         <div className="col">
-        //             <h3>B</h3>
-        //         </div>
-        //     </div> */}
-
-
-
-
-        {/* //     <div className="row">
-        //         <div className="col">
-        //             <h3> C</h3>
-        //         </div>
-                <div className="col">
-                    <h3>D</h3>
-                </div>
-            </div> */} 
-
-
-         </div>
-
-
-    );
-}
+  const listt = arr.map((dep) => (
+    <div className="col-xl-3 col-md-4 col-sm">
+      <div key={dep} className="block">
+        <Link to={dep.id}>
+          <h3> {dep.id}</h3>
+          <p className="text">{dep.name}</p>
+        </Link>
+      </div>
+    </div>
+  ));
+  return (
+    <div className="cleck">
+      <h3 className="text" >Select Department Block</h3>
+      <div className="row">{listt}</div>
+    </div>
+  );
+};
 export default Block;
