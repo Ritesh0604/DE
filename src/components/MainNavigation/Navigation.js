@@ -6,10 +6,6 @@ const Navigation = (props) => {
     return (
         <nav className={classes.nav}>
                         <button>Navigate</button>
-            {/* <ul>
-                    <li>
-                    </li>
-            </ul> */}
         </nav>
     );
 };
