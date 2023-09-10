@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux'
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
+import { onLogin } from '../../store/authSlice';
 
 const Login = (props) => {
+
+    const dispatch = useDispatch()
+
     const nav = useNavigate();
 
     const [enteredEmail, setEnteredEmail] = useState('');
@@ -40,7 +44,8 @@ const Login = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        nav("/form");
+        dispatch(onLogin());
+        nav("/navigate");
     };
 
     return (
