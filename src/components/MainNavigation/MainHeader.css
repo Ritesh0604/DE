@@ -6,13 +6,9 @@
 }
 
 .navbar{
-    background-color: rgb(11, 11, 116);;
+    background-color: rgb(11, 11, 116);
     position: fixed;
     top:0px;
     width: 100%;
 }
 
-.btn{
-    background-color: white;
-    color: black;
-}

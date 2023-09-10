@@ -8,10 +8,11 @@
         margin-right:5%;
         background: -webkit-linear-gradient(right, white, #f5f5f5);
         margin-bottom:5%;
+        transition: all 0.5s;
     }
     .block:hover{
         box-shadow:  0 0 10px rgb(3, 8, 9);
-        background: -webkit-linear-gradient(right,#f5f5f5, white);
+        /* background: -webkit-linear-gradient(right,#f5f5f5, white); */
     }
     .block h3{
         text-align: center;
@@ -20,7 +21,12 @@
 
 .cleck{
     margin-top:5% ;
-  
-    
 } 
-
+a{
+    color: black;
+    text-decoration: none;
+}
+.text{
+    text-align: center;
+    
+}

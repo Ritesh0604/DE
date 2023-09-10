@@ -1,10 +1,9 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home/Home";
-import MainHeader from "./components/MainNavigation/MainHeader";
 import Root from "./pages/Root";
 import Block from "./components/Block/Block";
-
+import Department from "./components/Department/Department";
 const router = createBrowserRouter(
     [{
         path: '/',
@@ -12,19 +11,14 @@ const router = createBrowserRouter(
         children:[
             {path:'',element: <Home/>},
             {path:'navigate',element: <Block/>},
-            
+            {path: 'navigate/:navigateBlock',element:<Department/>}
         ]
     }
 ]);
 
 function App() {
     return (
-        // <React.Fragment>
-        //     <MainHeader />
-        //     <main>
-        //         <Home />
-        //     </main>
-        // </React.Fragment>
+
         <RouterProvider router={router}></RouterProvider>
     );
 }
