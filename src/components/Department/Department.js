@@ -1,78 +1,47 @@
-import { useParams } from "react-router-dom";
-import './Department.css'
-const Department = () => {
-    const params = useParams();
-    const teacher = {
-        name: "hiii",
-        note: "this is note"
+// import { useParams } from "react-router-dom";
+import Button from '../UI/Button/Button'
+import FacultyViewModal from '../UI/Modal/FacultyViewModal'
+import Wrapper from '../Helper/Wrapper'
+import { useEffect, useState } from 'react';
+
+const Department = (props) => {
+    // const params=useParams();
+    const [show, setShow] = useState();
+    useEffect(() => {
+        console.log("dummy");
+    })
+    const showHandler = (event) => {
+        setShow({
+            name: 'Jashvant Sir',
+            cabin: 'B - 202',
+            email: 'abc@gmail.com',
+            time: 'any time'
+        })
     }
-
-
+    const setVal = () => {
+        setShow(false);
+    }
+    const alertShow = () => {
+        window.alert("yes");
+        setShow(false);
+    }
     return (
-        <>
+        <Wrapper>
             <h1>Department Page</h1>
-            <p>{params.navigateBlock}</p>
-            <div className="allFaculty row ">
-                <div class="card abc col-3" >
-                    <img class="card-img-top" src="/jrd.png" alt="Card image cap"></img>
-                    <div class="card-body">
-                        <div className="q">
-                            <label>Name:</label>
-                            <p>{teacher.name}</p>
-                        </div>
-                        <div className="q">
-                            <label>Note:</label>
-                            <p>{teacher.note}</p>
-                        </div>
-
-
-                    </div>
-                </div> <div class="card abc col-3" >
-                    <img class="card-img-top" src="/jrd.png" alt="Card image cap"></img>
-                    <div class="card-body">
-                        <div className="q">
-                            <label>Name:</label>
-                            <p>{teacher.name}</p>
-                        </div>
-                        <div className="q">
-                            <label>Note:</label>
-                            <p>{teacher.note}</p>
-                        </div>
-
-
-                    </div>
-                </div> <div class="card abc col-3" >
-                    <img class="card-img-top" src="/jrd.png" alt="Card image cap"></img>
-                    <div class="card-body">
-                        <div className="q">
-                            <label>Name:</label>
-                            <p>{teacher.name}</p>
-                        </div>
-                        <div className="q">
-                            <label>Note:</label>
-                            <p>{teacher.note}</p>
-                        </div>
-
-
-                    </div>
-                </div>
-                <div class="card abc col-3" >
-                    <img class="card-img-top" src="/jrd.png" alt="Card image cap"></img>
-                    <div class="card-body">
-                        <div className="q">
-                            <label>Name:</label>
-                            <p>{teacher.name}</p>
-                        </div>
-                        <div className="q">
-                            <label>Note:</label>
-                            <p>{teacher.note}</p>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </>
+            {/* <p>{params.navigateBlock}</p> */}
+            {show && (
+                <FacultyViewModal
+                    name={show.name}
+                    email={show.email}
+                    cabin={show.cabin}
+                    time={show.time}
+                    onConfirm={setVal}
+                    onAlert={alertShow}
+                />
+            )}
+            <Button onClick={showHandler}>click me</Button>
+        </Wrapper>
     );
 };
+
 export default Department;
