@@ -1,100 +1,84 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+import { useFormik } from "formik";
+import { formSchema } from "../../schemas";
+import Button from '../UI/Button/Button';
 import Card from '../UI/Card/Card';
 import classes from './Form.module.css';
-import Button from '../UI/Button/Button';
+
+const initialValues = {
+    email: "",
+    fullName: "",
+    blockName: "",
+    time: "",
+    notes: "",
+};
 
 const Form = (props) => {
 
-    const [enteredEmail, setEnteredEmail] = useState('');
-    const [emailIsValid, setEmailIsValid] = useState();
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+        initialValues,
+        validationSchema: formSchema,
+        onSubmit: (values, action) => {
+            console.log(
+                values
+            );
+            action.resetForm();
+        },
+    });
 
-    const [enteredFullName, setEnteredFullName] = useState('');
-    const [fullNameIsValid, setFullNameIsValid] = useState();
-
-    const [enteredNotes, setEnteredNotes] = useState('');
-    const [notesIsValid, setNotesIsValid] = useState();
-
-    const [enteredFile, setEnteredFile] = useState('');
-
-    const [formIsValid, setFormIsValid] = useState(false);
-
-    const emailChangeHandler = (event) => {
-        setEnteredEmail(event.target.value);
-
-        setFormIsValid(
-            event.target.value.includes('@') && enteredFullName.trim().length > 2 &&
-            enteredNotes.trim().length > 2
-        );
-    };
-    const fullNameChangeHandler = (event) => {
-        setEnteredFullName(event.target.value);
-
-        setFormIsValid(
-            event.target.value.trim().length > 2 && enteredEmail.includes('@') && enteredNotes.trim().length > 2
-        );
-    };
-    const notesChangeHandler = (event) => {
-        setEnteredNotes(event.target.value);
-
-        setFormIsValid(
-            event.target.value.trim().length > 2 && enteredEmail.includes('@') && enteredFullName.trim().length > 2
-        );
-    };
-    const fileChangeHandler = (event) => {
-        setEnteredFile(event.target.value);
-    }
-
-
-    const validateEmailHandler = () => {
-        setEmailIsValid(enteredEmail.includes('@'));
-    };
-    const validatefullNameHandler = () => {
-        setFullNameIsValid(enteredFullName.trim().length > 2);
-    };
-    const validateNotesHandler = () => {
-        setNotesIsValid(enteredFullName.trim().length > 2);
-    };
-
-    const submitHandler = (event) => {
-        event.preventDefault();
-        // props.onLogin(enteredEmail, enteredPassword);
-    };
 
     return (
         <Card className={classes.login}>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={handleSubmit}>
                 <div
-                    className={`${classes.control} ${emailIsValid === false ? classes.invalid : ''
-                        }`}
+                    className={classes.control}
                 >
+
                     <label htmlFor="email">E-Mail</label>
+                    <div className={classes.bla}>
                     <input
                         type="email"
                         id="email"
-                        value={enteredEmail}
-                        onChange={emailChangeHandler}
-                        onBlur={validateEmailHandler}
-                    />
+                        name="email"
+                        placeholder="abc@example.com"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                    />  
+                        {errors.email && touched.email ? (
+                            <span className={classes.error}>{errors.email}</span>
+                        ) : null}
+                    </div>
                 </div>
                 <div
-                    className={`${classes.control} ${fullNameIsValid === false ? classes.invalid : ''
-                        }`}
+                    className={classes.control}
                 >
                     <label htmlFor="fullName">Full Name</label>
                     <input
                         type="text"
                         id="fullName"
-                        value={enteredFullName}
-                        onChange={fullNameChangeHandler}
-                        onBlur={validatefullNameHandler}
+                        name="fullName"
+                        placeholder="john doe"
+                        value={values.fullName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                     />
+                    {errors.fullName && touched.fullName ? (
+                        <p className={classes.error}>{errors.fullName}</p>
+                    ) : null}
                 </div>
                 <div
                     className={classes.control}
                 >
                     <label htmlFor="blockName">Block Name</label>
-                    <select>
+                    <select
+                        id="blockName"
+                        name="blockName"
+                        value={values.blockName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                    >
                         <option name="" value=''>--Please choose an option--</option>
                         <option name='Information Technology' value="IT">Information-Technology</option>
                         <option name='Computer-Engineering' value="CE">Computer Engineering</option>
@@ -110,6 +94,9 @@ const Form = (props) => {
                         <option name='Applied-Mechanics' value="AM">Applied Mechanics</option>
                         <option name='Science-And-Humanities' value="SH">Science And Humanities</option>
                     </select>
+                    {errors.blockName && touched.blockName ? (
+                        <p className={classes.error}>{errors.blockName}</p>
+                    ) : null}
                 </div>
                 <div
                     // className={`${classes.control} ${fullNameIsValid === false ? classes.invalid : ''
@@ -119,26 +106,36 @@ const Form = (props) => {
                     <label htmlFor="time">Select Time</label>
                     <input
                         type="text"
-                        id=""
+                        id="time"
+                        name="time"
+                        placeholder="10:30 AM to 11:30 AM"
+                        value={values.time}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                     // value={enteredfullName}
                     // onChange={fullNameChangeHandler}
                     // onBlur={validatefullNameHandler}
                     />
+                    {errors.time && touched.time ? (
+                        <p className={classes.error}>{errors.time}</p>
+                    ) : null}
                 </div>
                 <div
-                    className={`${classes.control} ${notesIsValid === false ? classes.invalid : ''
-                        }`}
+                    className={classes.control}
                 >
-                    <label htmlFor="Notes">Notes</label>
+                    <label htmlFor="notes">Notes</label>
                     <input
                         type="text"
-                        id="Notes"
-                        placeholder="Notes"
-                        multiline
-                        value={enteredNotes}
-                        onChange={notesChangeHandler}
-                        onBlur={validateNotesHandler}
+                        id="notes"
+                        name="notes"
+                        placeholder="MYSY"
+                        value={values.notes}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                     />
+                    {errors.notes && touched.notes ? (
+                        <p className={classes.error}>{errors.notes}</p>
+                    ) : null}
                 </div>
                 <div
                     className={classes.control}
@@ -147,14 +144,13 @@ const Form = (props) => {
                     <input
                         type="file"
                         id="image"
+                        name="image"
                         accept="image/png, image/jpeg, image/jpg"
-                        value={enteredFile}
-                        onChange={fileChangeHandler}
 
                     />
                 </div>
                 <div className={classes.actions}>
-                    <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+                    <Button type="submit" className={classes.btn} >
                         Submit
                     </Button>
                 </div>

@@ -4,14 +4,16 @@
     margin: 2rem auto;
     padding: 2rem;
 }
-
 .control {
     margin: 1rem 0;
     display: flex;
-    align-items: stretch;
+
+    
+}
+.bla{
+    display: flex;
     flex-direction: column;
 }
-
 .control label,
 .control input {
     display: block;
@@ -66,4 +68,10 @@
     font: inherit;
     cursor: pointer;
 }
-
+.error {
+    font-size: 1.4rem;
+    color: #b22b27;
+    margin-left: 24%;
+    margin-top: 0%;
+    
+}

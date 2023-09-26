@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        value: false
+        value:false,
     },
     reducers: {
         onLogin: (state) => {
-            state.value = true
-        }
+            state.value = true;
+        },
     }
 })
 

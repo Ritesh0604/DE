@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <Card className="home">
-        <img src="/sitemap.jpg" width="70%" height="70%"></img>
+        <img src="/sitemap.jpg" alt="img" width="70%" height="70%"></img>
 
         <div className="content">
           <p>
