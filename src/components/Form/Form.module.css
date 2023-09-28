@@ -7,16 +7,20 @@
 .control {
     margin: 1rem 0;
     display: flex;
-
+   flex-direction:row;
     
 }
+.control label{
+    width: 20%;
+}
 .bla{
-    display: flex;
+    display:flex;
     flex-direction: column;
+    width:75%;
 }
 .control label,
 .control input {
-    display: block;
+  display: block;
 }
 
 .control label {
@@ -32,6 +36,7 @@
     padding: 0.35rem 0.35rem;
     border-radius: 6px;
     border: 1px solid #ccc;
+    
 }
 
 .control input:focus {
@@ -47,6 +52,8 @@
 
 .actions {
     text-align: center;
+   margin-top:10% ;
+ 
 }
 
 @media (min-width: 768px) {
@@ -54,6 +61,7 @@
         align-items: center;
         flex-direction: row;
     }
+    
 
 }
 .control select {
@@ -69,9 +77,10 @@
     cursor: pointer;
 }
 .error {
-    font-size: 1.4rem;
+    font-size: 0.75rem;
     color: #b22b27;
     margin-left: 24%;
     margin-top: 0%;
     
 }
+

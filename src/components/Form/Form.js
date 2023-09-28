@@ -34,7 +34,7 @@ const Form = (props) => {
                 <div
                     className={classes.control}
                 >
-
+                    
                     <label htmlFor="email">E-Mail</label>
                     <div className={classes.bla}>
                     <input
@@ -45,16 +45,18 @@ const Form = (props) => {
                         value={values.email}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                    />  
-                        {errors.email && touched.email ? (
+                    />
+                    {errors.email && touched.email ? (
                             <span className={classes.error}>{errors.email}</span>
-                        ) : null}
+                        ) : null}    
                     </div>
+                    
                 </div>
                 <div
                     className={classes.control}
                 >
                     <label htmlFor="fullName">Full Name</label>
+                    <div className={classes.bla}>
                     <input
                         type="text"
                         id="fullName"
@@ -67,11 +69,13 @@ const Form = (props) => {
                     {errors.fullName && touched.fullName ? (
                         <p className={classes.error}>{errors.fullName}</p>
                     ) : null}
+                    </div>
                 </div>
                 <div
                     className={classes.control}
                 >
                     <label htmlFor="blockName">Block Name</label>
+                    <div className={classes.bla}>
                     <select
                         id="blockName"
                         name="blockName"
@@ -97,6 +101,7 @@ const Form = (props) => {
                     {errors.blockName && touched.blockName ? (
                         <p className={classes.error}>{errors.blockName}</p>
                     ) : null}
+                    </div>
                 </div>
                 <div
                     // className={`${classes.control} ${fullNameIsValid === false ? classes.invalid : ''
@@ -104,6 +109,7 @@ const Form = (props) => {
                     className={classes.control}
                 >
                     <label htmlFor="time">Select Time</label>
+                    <div className={classes.bla}>
                     <input
                         type="text"
                         id="time"
@@ -119,11 +125,13 @@ const Form = (props) => {
                     {errors.time && touched.time ? (
                         <p className={classes.error}>{errors.time}</p>
                     ) : null}
+                    </div>
                 </div>
                 <div
                     className={classes.control}
                 >
                     <label htmlFor="notes">Notes</label>
+                    <div className={classes.bla}>
                     <input
                         type="text"
                         id="notes"
@@ -136,11 +144,13 @@ const Form = (props) => {
                     {errors.notes && touched.notes ? (
                         <p className={classes.error}>{errors.notes}</p>
                     ) : null}
+                    </div>
                 </div>
                 <div
                     className={classes.control}
                 >
                     <label htmlFor="image">Photo</label>
+                    <div className={classes.bla}>
                     <input
                         type="file"
                         id="image"
@@ -148,6 +158,7 @@ const Form = (props) => {
                         accept="image/png, image/jpeg, image/jpg"
 
                     />
+                     </div>
                 </div>
                 <div className={classes.actions}>
                     <Button type="submit" className={classes.btn} >
