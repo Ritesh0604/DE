@@ -5,6 +5,7 @@ const Root = () => {
 
     return (
         <>
+        
             <MainHeader ></MainHeader>
             <main >
                 <Outlet  ></Outlet>
