@@ -19,10 +19,15 @@ const Form = (props) => {
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues,
         validationSchema: formSchema,
-        onSubmit: (values, action) => {
-            console.log(
-                values
-            );
+        onSubmit: async (values, action) => {
+            const response = await fetch('http://localhost:8080/demo', {
+                method: 'POST',
+                body: JSON.stringify(values),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const data = await response.json();
             action.resetForm();
         },
     });
