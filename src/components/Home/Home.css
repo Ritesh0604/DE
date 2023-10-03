@@ -16,7 +16,7 @@
   cursor: pointer;
   font: inherit;
   border: none;
-  background-color: rgb(11, 11, 116);
+  background-color: #002366;
   color: white;
   padding: 0.75rem 3rem;
   display: flex;
@@ -66,7 +66,8 @@
 
 
 .btn:hover{
-  background-color: rgb(11, 11, 90);
+  background-color: #A9A9A9;
+  color:#002366;
 
 }
 

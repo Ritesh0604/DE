@@ -2,5 +2,20 @@
     justify-content:space-between;
 }
 
+.header1{
+   background : #002366;
+   color :white;
+}
 
+.button1{
+    background:#fefefe;
+    color:#002366;
+    border-radius:10px;
+    padding : 12px;
+}
+
+.button1:hover{
+    background:#DCDCDC;
+    color:#002366;
+}
 
