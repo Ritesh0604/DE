@@ -1,85 +1,93 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
-import { onLogin } from '../../store/authSlice';
+import { useFormik } from "formik";
+import { loginSchema } from "../../schemas/adminSchema";
+import { useCookies } from 'react-cookie';
+// import SetCookie from '../../hooks/setCookie';
+// import GetCookie from '../../hooks/getCookie';
+// import RemoveCookie from '../../hooks/removeCookie';
+
+const initialValues = {
+    email: "",
+    password: "",
+};
 
 const Login = (props) => {
-
-    const dispatch = useDispatch()
-
+    const [cookies, setCookie] = useCookies(['user']);
     const nav = useNavigate();
+    
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+        initialValues,
+        validationSchema: loginSchema,
+        onSubmit: async (values, action, event) => {
+            await fetch("http://localhost:5000/admin/login", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(values)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        alert("invalid credential");
+                        // throw new Error("Invalid credential.")
+                    } else {
+                        setCookie('email', values.email, { path: '/' });
+                        setCookie('password', values.password, { path: '/' });
+                        action.resetForm();
+                        nav("/");
+                    }
+                    return response.json()
+                })
+        },
+    });
 
-    const [enteredEmail, setEnteredEmail] = useState('');
-    const [emailIsValid, setEmailIsValid] = useState();
-    const [enteredPassword, setEnteredPassword] = useState('');
-    const [passwordIsValid, setPasswordIsValid] = useState();
-    const [formIsValid, setFormIsValid] = useState(false);
 
-    const emailChangeHandler = (event) => {
-        setEnteredEmail(event.target.value);
-
-        setFormIsValid(
-            event.target.value.includes('@') && enteredPassword.trim().length > 6
-        );
-    };
-
-    const passwordChangeHandler = (event) => {
-        setEnteredPassword(event.target.value);
-
-        setFormIsValid(
-            event.target.value.trim().length > 6 && enteredEmail.includes('@')
-        );
-    };
-
-    const validateEmailHandler = () => {
-        setEmailIsValid(enteredEmail.includes('@'));
-    };
-
-    const validatePasswordHandler = () => {
-        setPasswordIsValid(enteredPassword.trim().length > 6);
-    };
-
-    const submitHandler = (event) => {
-        event.preventDefault();
-        dispatch(onLogin());
-        nav("/navigate");
-    };
 
     return (
         <Card className={classes.login}>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={handleSubmit}>
                 <div
-                    className={`${classes.control} ${emailIsValid === false ? classes.invalid : ''
-                        }`}
+                    className={classes.control}
                 >
                     <label htmlFor="email">E-Mail</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={enteredEmail}
-                        onChange={emailChangeHandler}
-                        onBlur={validateEmailHandler}
-                    />
+                    <div className={classes.bla}>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="abc@example.com"
+                            value={values.email}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.email && touched.email ? (
+                            <span className={classes.error}>{errors.email}</span>
+                        ) : null}
+                    </div>
                 </div>
                 <div
-                    className={`${classes.control} ${passwordIsValid === false ? classes.invalid : ''
-                        }`}
+                    className={classes.control}
                 >
                     <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={enteredPassword}
-                        onChange={passwordChangeHandler}
-                        onBlur={validatePasswordHandler}
-                    />
+                    <div className={classes.bla}>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={values.password}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.password && touched.password ? (
+                            <p className={classes.error}>{errors.password}</p>
+                        ) : null}
+                    </div>
                 </div>
                 <div className={classes.actions}>
-                    <Button type="submit" className={classes.btn} disabled={!formIsValid}>
-                        Submit
+                    <Button type="submit" className={classes.btn}>
+                        Login
                     </Button>
                 </div>
             </form>

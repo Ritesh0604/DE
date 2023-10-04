@@ -16,6 +16,11 @@
 .control input {
   display: block;
 }
+.bla{
+    display:flex;
+    flex-direction: column;
+    width:75%;
+}
 
 .control label {
   font-weight: bold;
@@ -53,4 +58,11 @@
     flex-direction: row;
   }
 
+}
+.error {
+    font-size: 0.75rem;
+    color: #b22b27;
+    margin-left: 24%;
+    margin-top: 0%;
+    
 }
