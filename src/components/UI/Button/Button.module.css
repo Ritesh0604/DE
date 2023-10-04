@@ -1,18 +1,19 @@
 .button {
   font: inherit;
-  border: 1px solid #4f005f;
-  background: #4f005f;
+  border: 1px solid  #002366;
+  background:  #002366;
   color: white;
   padding: 0.3rem 1.5rem;
   cursor: pointer;
   font-size: 1.15rem;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .button:hover,
 .button:active {
-  background: #741188;
-  border-color: #741188;
+  background:#DCDCDC;
+  border-color: #002366;
+  color:#002366;
  
 }
 
@@ -24,8 +25,8 @@ button:disabled,
 button:focus:disabled,
 button:hover:disabled,
 button:active:disabled {
-  background: #ccc;
-  border-color: #ccc;
-  color: #666666;
+  background:#DCDCDC ;
+  border-color: #002366;
+  color:#002366 ;
   cursor: not-allowed;
 }

@@ -3,6 +3,7 @@ import Button from '../UI/Button/Button'
 import FacultyViewModal from '../UI/Modal/FacultyViewModal'
 import Wrapper from '../Helper/Wrapper'
 import { useEffect, useState } from 'react';
+import './Department.css';
 
 const Department = (props) => {
     // const params=useParams();
@@ -15,7 +16,8 @@ const Department = (props) => {
             name: 'Jashvant Sir',
             cabin: 'B - 202',
             email: 'abc@gmail.com',
-            time: 'any time'
+            time: 'any time',
+            notes: 'MYSY'
         })
     }
     const setVal = () => {
@@ -35,11 +37,22 @@ const Department = (props) => {
                     email={show.email}
                     cabin={show.cabin}
                     time={show.time}
+                    notes={show.notes}
                     onConfirm={setVal}
                     onAlert={alertShow}
                 />
             )}
-            <Button onClick={showHandler}>click me</Button>
+            
+            <div className="card " style={{width: "18rem"}}>
+                   <img src="/jrd.png" className="card-img-top faculty-photo"  alt="jrd" />
+                <div className="card-body">
+                     <h5 className="card-title faculty-name text-center">Prof.Jashvant Dave</h5>
+                     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                     <div className='button text-center'> <Button onClick={showHandler}>click me</Button></div>
+                    
+                </div>
+            </div> 
+        
         </Wrapper>
     );
 };

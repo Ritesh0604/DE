@@ -3,4 +3,31 @@
 }
 
 
+.header1{
+   background : #002366;
+   color :white;
+   height:4rem;
+}
+
+.button1{
+    cursor: pointer;
+  border: 1px solid 0xFFEEEEEE;
+  background-color: 0xFFEEEEEE;
+  color: #dde1e9;
+  padding: 0.75rem ;
+  display: flex;
+  justify-content:center;
+  border-radius: 10px;
+  font-weight: bold;
+  align-content: center;
+  width:fit-content;
+    margin-right:1rem;
+    font-size:18px;
+    
+}
+
+.button1:hover{
+    background:#DCDCDC;
+    color:#cad1de;
+}
 

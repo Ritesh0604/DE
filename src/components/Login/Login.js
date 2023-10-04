@@ -6,9 +6,6 @@ import Button from '../UI/Button/Button';
 import { useFormik } from "formik";
 import { loginSchema } from "../../schemas/adminSchema";
 import { useCookies } from 'react-cookie';
-// import SetCookie from '../../hooks/setCookie';
-// import GetCookie from '../../hooks/getCookie';
-// import RemoveCookie from '../../hooks/removeCookie';
 
 const initialValues = {
     email: "",
@@ -33,10 +30,10 @@ const Login = (props) => {
                         alert("invalid credential");
                         // throw new Error("Invalid credential.")
                     } else {
-                        setCookie('email', values.email, { path: '/' });
+                        setCookie('email', values.email, {maxage: 1}, { path: '/' });
                         setCookie('password', values.password, { path: '/' });
                         action.resetForm();
-                        nav("/");
+                        nav("..");
                     }
                     return response.json()
                 })

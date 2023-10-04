@@ -16,21 +16,36 @@ const ModalOverlay = (props) => {
     return (
         <Card className={classes.modal}>
             <header className={classes.header}>
-                <h2>{props.name}</h2>
+                <img src="/jrd.png" className={classes.photo} alt="jrd"  />
+                <h3>{props.name}</h3>
+          
             </header>
+
             <div className={classes.content}>
-                <p>{props.cabin}</p>
-            </div>
-            <div className={classes.content}>
+                <h5>E-mail : </h5>
                 <p>{props.email}</p>
             </div>
+
             <div className={classes.content}>
+                <h5>Cabin : </h5>
+                <p>{props.cabin}</p>
+            </div>
+           
+            <div className={classes.content}>
+                <h5>Time : </h5>
                 <p>{props.time}</p>
             </div>
+
+            <div className={classes.content}>
+                <h5>Notes : </h5>
+                <p>{props.notes}</p>
+            </div>
+            
+            
             <footer className={classes.actions}>
-                <Button onClick={props.onConfirm}>Okay</Button>
-                {checkVal && <NavLink to="/form" > <button className="d-flex btn btn-outline-success" type="submit">Edit</button></NavLink>}
-                {checkVal && <Button onClick={props.onAlert}>Delete</Button>}
+                <Button onClick={props.onConfirm}>Close</Button>
+                {checkVal && <NavLink to="/form" > <Button className="d-flex submit btn btn-outline-success mx-4" type="submit">Edit</Button></NavLink>}
+                {checkVal && <Button className="delete" onClick={props.onAlert}>Delete</Button>}
             </footer>
         </Card>
     );
@@ -49,6 +64,7 @@ const FacultyViewModal = (props) => {
                     cabin={props.cabin}
                     email={props.email}
                     time={props.time}
+                    notes={props.notes}
                     onConfirm={props.onConfirm}
                     onAlert={props.onAlert}
                 />,

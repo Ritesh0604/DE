@@ -16,7 +16,7 @@ const Home = () => {
           </p>
           <div className="forButton">
           <NavLink to="navigate">  
-            <button className="d-flex btn btn-outline-success search" type="submit">
+            <button className="search d-flex btn btn-outline-success search" type="submit">
               Search
             </button>
           </NavLink>
