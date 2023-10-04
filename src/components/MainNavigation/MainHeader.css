@@ -2,16 +2,28 @@
     justify-content:space-between;
 }
 
+
 .header1{
    background : #002366;
    color :white;
+   height:4rem;
 }
 
 .button1{
-    background:#fefefe;
-    color:#002366;
-    border-radius:10px;
-    padding : 12px;
+    cursor: pointer;
+  border: 1px solid 0xFFEEEEEE;
+  background-color: 0xFFEEEEEE;
+  color: #002366;
+  padding: 0.75rem ;
+  display: flex;
+  justify-content:center;
+  border-radius: 10px;
+  font-weight: bold;
+  align-content: center;
+  width:fit-content;
+    margin-right:1rem;
+    font-size:8px;
+    
 }
 
 .button1:hover{
