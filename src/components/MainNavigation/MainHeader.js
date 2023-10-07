@@ -14,16 +14,16 @@ const MainHeader = (props) => {
         console.log(cookies.email);
     return (
         <header>
-            <div className=" header1 p-0 d-flex justify-content-between   ">
+            <div className=" header1 p-0 d-flex justify-content-evenly   ">
 
-                <div className=" p-2 d-flex ps-2 ">
+                <div className="  d-flex headpart ">
                     <img
                         src="logo.png"
                         alt="vishwakarma"
                         style={{ height: "100%", width: "7%" }}
                     />
 
-                    <h3 className="heading p-0 m-0 d-flex align-items-center ps-2 ">
+                    <h3 className=" p-2 align-items-center head ">
                         Vishwakarama Government Engineering College
                     </h3>
                 </div>
@@ -31,13 +31,12 @@ const MainHeader = (props) => {
                 <div className="   d-flex align-items-center absolute ">
                     {(!cookies.email && !checkval) && (
                         <NavLink to="login">
-                            {" "}
-                            <button
-                                className="  py-1  button1 "
+                            <div
+                                className="  py-1 admin "
                                 type="submit"
                             >
                                 Admin Login
-                            </button>
+                            </div>
 
                         </NavLink>
                     )}

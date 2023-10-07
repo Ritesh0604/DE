@@ -1,33 +1,60 @@
-.row{
-    justify-content:space-between;
+.header1 {
+    /* background : #002366;
+   color :white; */
+    box-shadow: 1px 2px 9px;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(to right , #002366,#165cdf);
 }
 
-
-.header1{
-   background : #002366;
-   color :white;
-   height:4rem;
-}
-
-.button1{
-    cursor: pointer;
-  border: 1px solid 0xFFEEEEEE;
-  background-color: 0xFFEEEEEE;
-  color: #dde1e9;
-  padding: 0.75rem ;
-  display: flex;
-  justify-content:center;
-  border-radius: 10px;
-  font-weight: bold;
-  align-content: center;
-  width:fit-content;
-    margin-right:1rem;
-    font-size:18px;
+.head {
+    color: white;
     
 }
+.admin{
+    
+    border: 1px solid white;
+    padding: 1rem;
+    border-radius: 18px;
+}
+@media only screen and (max-width:768px) {
 
-.button1:hover{
-    background:#DCDCDC;
-    color:#cad1de;
+    .admin{
+    
+    border: 1px solid white;
+    padding: 1rem;
+    border-radius: 18px;
+    font-size:x-small;
+    background-color: green;
+}
+}
+
+.headpart {
+    display: flex;
+    align-items: center;
+}
+
+.button1 {
+    cursor: pointer;
+    border: 1px solid 0xFFEEEEEE;
+    background-color: red;
+    color: #dde1e9;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+    align-content: center;
+    width: fit-content;
+
+    font-size: 18px;
+   
+
+}
+
+.button1:hover {
+    background: #DCDCDC;
+    color: #cad1de;
 }
 
