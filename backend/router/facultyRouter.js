@@ -10,7 +10,7 @@ const router = express.Router()
 
 router.post('/register', async (req, res) => {
     const data = req.body;
-    console.log(data);
+    // console.log(data);
     await facultyModel.findOne({"email":data.email})
     .then(response => {
         if (response == null) {

@@ -4,21 +4,22 @@ import ReactDOM from 'react-dom';
 import Card from '../Card/Card';
 import Button from '../Button/Button';
 import classes from './FacultyViewModal.module.css';
-import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 const Backdrop = (props) => {
     return <div className={classes.backdrop} onClick={props.onConfirm} />;
 };
 
 const ModalOverlay = (props) => {
-    const checkVal = useSelector(state => state.auth.value)
+    const [cookies, setCookie] = useCookies(['user']);
+    // const checkVal = useSelector(state => state.auth.value)
     return (
         <Card className={classes.modal}>
             <header className={classes.header}>
-                <img src="/jrd.png" className={classes.photo} alt="jrd"  />
+                <img src="/jrd.png" className={classes.photo} alt="jrd" />
                 <h3>{props.name}</h3>
-          
+
             </header>
 
             <div className={classes.content}>
@@ -30,7 +31,7 @@ const ModalOverlay = (props) => {
                 <h5>Cabin : </h5>
                 <p>{props.cabin}</p>
             </div>
-           
+
             <div className={classes.content}>
                 <h5>Time : </h5>
                 <p>{props.time}</p>
@@ -40,12 +41,12 @@ const ModalOverlay = (props) => {
                 <h5>Notes : </h5>
                 <p>{props.notes}</p>
             </div>
-            
-            
+
+
             <footer className={classes.actions}>
                 <Button onClick={props.onConfirm}>Close</Button>
-                {checkVal && <NavLink to="/form" > <Button className="d-flex submit btn btn-outline-success mx-4" type="submit">Edit</Button></NavLink>}
-                {checkVal && <Button className="delete" onClick={props.onAlert}>Delete</Button>}
+                {cookies.email && <NavLink to="/form" > <Button className="d-flex submit btn btn-outline-success mx-4" type="submit">Edit</Button></NavLink>}
+                {cookies.email && <Button className="delete" onClick={props.onAlert}>Delete</Button>}
             </footer>
         </Card>
     );

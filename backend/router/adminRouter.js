@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.post('/login', async (req, res) => {
     const data = req.body
-    console.log(data);
+    // console.log(data);
     await adminModel.findOne(data)
         .then(response => {
             if (response != null)

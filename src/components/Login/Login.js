@@ -6,7 +6,9 @@ import Button from '../UI/Button/Button';
 import { useFormik } from "formik";
 import { loginSchema } from "../../schemas/adminSchema";
 import { useCookies } from 'react-cookie';
-
+// import GetCookie from "../hooks/getCookie";
+import { useDispatch, useSelector } from 'react-redux';
+import { onLogin } from '../../store/counterSlice';
 const initialValues = {
     email: "",
     password: "",
@@ -15,11 +17,13 @@ const initialValues = {
 const Login = (props) => {
     const [cookies, setCookie] = useCookies(['user']);
     const nav = useNavigate();
-    
+    // const checkval = useSelector((state) => state.counter.value);
+    const dispatch = useDispatch();
+    // console.log(checkval+"upp");
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues,
         validationSchema: loginSchema,
-        onSubmit: async (values, action, event) => {
+        onSubmit: async (values, action) => {
             await fetch("http://localhost:5000/admin/login", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -30,15 +34,17 @@ const Login = (props) => {
                         alert("invalid credential");
                         // throw new Error("Invalid credential.")
                     } else {
-                        setCookie('email', values.email, {maxage: 1}, { path: '/' });
-                        setCookie('password', values.password, { path: '/' });
+                        setCookie('email', values.email, { path: '/' });
+                        dispatch(onLogin());
+                        // console.log(checkval);
+                        // setCookie(' password', values.password, { path: '/' });
                         action.resetForm();
-                        nav("..");
+                        nav(-1);
                     }
                     return response.json()
                 })
-        },
-    });
+            },
+        });
 
 
 
