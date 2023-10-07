@@ -1,12 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import "./MainHeader.css";
-import Button from "../UI/Button/Button";
 import { useCookies } from 'react-cookie';
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const MainHeader = (props) => {
     const [cookies, setCookie] = useCookies(['user']);
-
+    const checkval = useSelector((state) => state.counter.value);
+    // let cookie
+    // useEffect(() => {
+    //     console.log(checkval);
+    // },[checkval,cookies.email])
+        console.log(cookies.email);
     return (
         <header>
             <div className=" header1 p-0 d-flex justify-content-between   ">
@@ -24,7 +29,7 @@ const MainHeader = (props) => {
                 </div>
 
                 <div className="   d-flex align-items-center absolute ">
-                    {!cookies.email && (
+                    {(!cookies.email && !checkval) && (
                         <NavLink to="login">
                             {" "}
                             <button
@@ -36,7 +41,7 @@ const MainHeader = (props) => {
 
                         </NavLink>
                     )}
-                    {cookies.email && (
+                    {(cookies.email || checkval) && (
                         <NavLink to="form">
                             {" "}
                             <button
