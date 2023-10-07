@@ -6,15 +6,19 @@ import { useEffect, useState } from 'react';
 import './Department.css';
 
 const Department = (props) => {
-    const params=useParams();
+    //const params=useParams();
     const [show, setShow] = useState();
     useEffect(() => {
-      fetchFacultyProfile();
+      fetchFacultyProfile()
     })
+  const {id}=useParams();
+   console.log(id);
     // <p>{params.navigateBlock}</p>
-    const navBlock=params.navigatBlock;
-    const fetchFacultyProfile = async () => {
-        const id = navBlock;
+
+   // const navBlock={params};
+       const fetchFacultyProfile = async () => {
+        const id ="A";
+       
         await fetch("http://localhost:5000/faculty/get_faculty_details", {
           method: "POST",
           headers: {"Content-Type":"application/json"},
