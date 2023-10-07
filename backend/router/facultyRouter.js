@@ -4,6 +4,10 @@ const facultyModel = require('../models/faculty')
 
 const router = express.Router()
 
+
+
+
+
 router.post('/register', async (req, res) => {
     const data = req.body;
     console.log(data);
@@ -35,16 +39,16 @@ router.post('/register', async (req, res) => {
 //         })
 // })
 
-// router.post('/get_faculty_details', async (req, res) => {
-//     const { id } = req.body
-//     await facultyModel.findOne({ _id: id })
-//         .then(response => {
-//             res.status(200).json(response)
-//         })
-//         .catch(err => {
-//             res.status(400).json(err)
-//         })
-// })
+router.post('/get_faculty_details', async (req, res) => {
+    const { id } = req.body
+    await facultyModel.find({ blockName: id })
+        .then(response => {
+            res.status(200).json(response)
+        })
+        .catch(err => {
+            res.status(400).json(err)
+        })
+})
 
 router.post('/delete', async (req, res) => {
     const data = req.body
