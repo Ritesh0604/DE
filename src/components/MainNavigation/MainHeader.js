@@ -11,7 +11,7 @@ const MainHeader = (props) => {
     // useEffect(() => {
     //     console.log(checkval);
     // },[checkval,cookies.email])
-        console.log(cookies.email);
+       // console.log(cookies.email);
     return (
         <header>
             <div className=" header1 p-0 d-flex justify-content-evenly   ">

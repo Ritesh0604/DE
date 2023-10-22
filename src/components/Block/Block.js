@@ -21,7 +21,7 @@ const arr = [
 const Block = () => {
     const listt = arr.map((dep) => (
         <div className="col-xl-3 col-md-4 col-sm">
-            <div key={dep} className="block">
+            <div key={dep} className="block">        
                 <Link to={dep.id}>
                     <h3> {dep.id}</h3>
                     <p className="text">{dep.name}</p>
