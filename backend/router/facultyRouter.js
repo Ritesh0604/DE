@@ -10,7 +10,6 @@ const router = express.Router()
 
 router.post('/register', async (req, res) => {
     const data = req.body;
-    console.log(data);
     await facultyModel.findOne({"email":data.email})
     .then(response => {
         if (response == null) {
@@ -41,7 +40,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/get_faculty_details', async (req, res) => {
     const { id } = req.body
-    await facultyModel.find({ blockName: id })
+    await facultyModel.find({ "blockName": id })
         .then(response => {
             res.status(200).json(response)
         })
@@ -52,8 +51,9 @@ router.post('/get_faculty_details', async (req, res) => {
 
 router.post('/delete', async (req, res) => {
     const data = req.body
+    console.log(data);
     try {
-        await facultyModel.deleteOne(data)
+        await facultyModel.delete({"email": data})
             .then(response => {
                 res.status(200).json(response)
             })

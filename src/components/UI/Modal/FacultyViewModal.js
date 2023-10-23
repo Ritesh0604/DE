@@ -12,7 +12,7 @@ const Backdrop = (props) => {
 };
 
 const ModalOverlay = (props) => {
-    const [cookies, setCookie] = useCookies(['user']);
+    const [cookies] = useCookies(['user']);
     // const checkVal = useSelector(state => state.auth.value)
     return (
         <Card className={classes.modal}>
@@ -46,13 +46,14 @@ const ModalOverlay = (props) => {
             <footer className={classes.actions}>
                 <Button onClick={props.onConfirm}>Close</Button>
                 {cookies.email && <NavLink to="/form" > <Button className="d-flex submit btn btn-outline-success mx-4" type="submit">Edit</Button></NavLink>}
-                {cookies.email && <Button className="delete" onClick={props.onAlert}>Delete</Button>}
+                {cookies.email && <Button className="delete" onClick={props.onDelete}>Delete</Button>}
             </footer>
         </Card>
     );
 };
 
 const FacultyViewModal = (props) => {
+    
     return (
         <React.Fragment>
             {ReactDOM.createPortal(
@@ -67,7 +68,7 @@ const FacultyViewModal = (props) => {
                     time={props.time}
                     notes={props.notes}
                     onConfirm={props.onConfirm}
-                    onAlert={props.onAlert}
+                    onDelete={props.onDelete}
                 />,
                 document.getElementById('overlay-root')
             )}
