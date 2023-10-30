@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Card from '../Card/Card';
 import Button from '../Button/Button';
 import classes from './FacultyViewModal.module.css';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 const Backdrop = (props) => {
@@ -45,7 +45,9 @@ const ModalOverlay = (props) => {
 
             <footer className={classes.actions}>
                 <Button onClick={props.onConfirm}>Close</Button>
-                {cookies.email && <NavLink to="/form" > <Button className="d-flex submit btn btn-outline-success mx-4" type="submit">Edit</Button></NavLink>}
+                {cookies.email && <Link to="edit" > <Button className="d-flex submit btn btn-outline-success mx-4" type="submit">Edit</Button></Link>}
+                {/* {cookies.email && <Button className="d-flex submit btn btn-outline-success mx-4"
+                onClick={props.onEdit}    type="submit">Edit</Button>} */}
                 {cookies.email && <Button className="delete" onClick={props.onDelete}>Delete</Button>}
             </footer>
         </Card>

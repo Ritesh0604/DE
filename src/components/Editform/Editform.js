@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { formSchema } from "../../schemas";
 import Button from '../UI/Button/Button';
 import Card from '../UI/Card/Card';
-import classes from './Form.module.css';
+import classes from './Editform.module.css';
+import { useSelector } from 'react-redux';
 
 const initialValues = {
     email: "",
@@ -15,30 +16,28 @@ const initialValues = {
     notes: "",
 };
 
-const Form = (props) => {
+const Editform = (props) => {
+    const data = useSelector((state) => state.faculty);
     window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
-    // const data = useSelector((state) => state.faculty);
-    // console.log(data);
     const nav = useNavigate();
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
-        initialValues,
+        initialValues: data,
         validationSchema: formSchema,
         onSubmit: async (values, action) => {
-            // event.preventDefault();
-            await fetch("http://localhost:5000/faculty/register", {
-                method: 'POST',
+            await fetch("http://localhost:5000/faculty/editdetail", {
+                method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(values)
             })
                 .then(response => {
-                    if (!response.ok) {
-                        // console.log(response);
-                        // throw new Error("duplicate email")
-                        alert("already registered");
-                    } else {
+                    if (response.ok) {
+                        alert("change data successfully");
                         action.resetForm();
+                        nav(-1);
+                    } else {
+                        alert("you can not change email address");
                         nav(-1);
                     }
                     return response.json()
@@ -160,7 +159,7 @@ const Form = (props) => {
                             placeholder="MYSY"
                             value={values.notes}
                             onChange={handleChange}
-                            onBlur={handleBlur} 
+                            onBlur={handleBlur}
                         />
                         {errors.notes && touched.notes ? (
                             <p className={classes.error}>{errors.notes}</p>
@@ -191,4 +190,4 @@ const Form = (props) => {
     );
 };
 
-export default Form;
+export default Editform;

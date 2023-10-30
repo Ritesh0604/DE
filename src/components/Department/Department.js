@@ -2,16 +2,20 @@ import { useParams } from "react-router-dom";
 import Button from "../UI/Button/Button";
 import FacultyViewModal from "../UI/Modal/FacultyViewModal";
 import Wrapper from "../Helper/Wrapper";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import "./Department.css";
+import { onShow } from "../../store/facultySlice"
 
 const Department = (props) => {
+    const dispatch = useDispatch();
     const params = useParams();
     const [show, setShow] = useState();
     const [faculties, setFaculties] = useState([]);
     useEffect(() => {
         fetchFacultyProfile();
-    });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     const navigateBlock = params.navigateBlock;
     const fetchFacultyProfile = async () => {
         const id = navigateBlock;
@@ -42,8 +46,9 @@ const Department = (props) => {
             cabin: data.blockName,
             email: data.email,
             time: data.time,
-            notes:data.notes,
+            notes: data.notes,
         });
+        dispatch(onShow(data));
     };
     const list = faculties.map((faculty) => {
         return (
@@ -55,7 +60,7 @@ const Department = (props) => {
                     </h5>
                     <p className="card-text">{faculty.notes}</p>
                     <div className="button text-center">
-                        <Button onClick={(event) => showHandler(event,faculty)}>click me</Button>
+                        <Button onClick={(event) => showHandler(event, faculty)}>click me</Button>
                     </div>
                 </div>
             </div>
@@ -70,7 +75,7 @@ const Department = (props) => {
         await fetch("http://localhost:5000/faculty/delete", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(email)
+            body: JSON.stringify({ email })
         })
             .then(response => {
                 if (!response.ok) {
@@ -78,15 +83,17 @@ const Department = (props) => {
                     console.log(response);
                 } else {
                     window.alert("Faculty Deleted Successfully");
+                    window.location.reload();
                 }
                 return response.json()
             })
     };
-    const deleteData = (data) => {
+    const deleteData = () => {
         setVal();
         deletefromDB(show.email);
-        
+
     };
+    // console.log(show);
     return (
         <Wrapper>
             <h1>Department Page</h1>

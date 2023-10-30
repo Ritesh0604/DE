@@ -5,6 +5,7 @@ import Root from "./pages/Root";
 import Block from "./components/Block/Block";
 import Login from "./components/Login/Login";
 import Form from "./components/Form/Form";
+import Editform from "./components/Editform/Editform";
 import Department from "./components/Department/Department";
 const router = createBrowserRouter(
     [{
@@ -15,7 +16,22 @@ const router = createBrowserRouter(
             {path:'navigate',element: <Block/>},
             {path:'login',element: <Login/>},
             {path:'form',element: <Form/>},
-            {path: 'navigate/:navigateBlock',element:<Department/>}
+            {path:'edit',element: <Form/>},
+            // {path: 'navigate/:navigateBlock',element:<Department/>}
+            {
+                path: 'navigate/:navigateBlock',
+                id: 'navigate-block',
+                children: [
+                    {
+                        index: true,
+                        element: <Department />
+                    },
+                    {
+                        path: 'edit',
+                        element: <Editform />,
+                    }
+                ]
+            }
         ]
     }
 ]);
