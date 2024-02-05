@@ -2,11 +2,12 @@
     /* background : #002366;
    color :white; */
     box-shadow: 1px 2px 9px;
-    height: 4rem;
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-image: linear-gradient(to right , #002366,#165cdf);
+    
 }
 
 .head {
@@ -16,8 +17,28 @@
 .admin{
     
     border: 1px solid white;
-    padding: 1rem;
-    border-radius: 18px;
+   padding: 1rem;
+    border-radius: 10px;
+    background-color:#FAFAFA;
+    font-weight:bold;
+
+
+    cursor: pointer;
+     
+      
+        display: flex;
+        justify-content: center;
+       
+        font-weight: bold;
+        align-content: center;
+        width: fit-content;
+    
+        font-size: 18px;
+ 
+}
+.admin:hover{
+    background-color:#ececec;
+    
 }
 @media only screen and (max-width:768px) {
 
@@ -30,6 +51,24 @@
     background-color: green;
 }
 }
+@media only screen and (max-width:768px) {
+    .button1 {
+        cursor: pointer;
+        border: 1px solid 0xFFEEEEEE;
+        background-color:#FAFAFA;
+        color:black;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        font-weight: bold;
+        align-content: center;
+        width: fit-content;
+    
+        font-size: 18px;
+       
+    
+    }
+}
 
 .headpart {
     display: flex;
@@ -39,22 +78,23 @@
 .button1 {
     cursor: pointer;
     border: 1px solid 0xFFEEEEEE;
-    background-color: red;
-    color: #dde1e9;
+    background-color:#FAFAFA;
+    color:black;
     display: flex;
+    padding: 0.75rem;
     justify-content: center;
     border-radius: 10px;
     font-weight: bold;
     align-content: center;
     width: fit-content;
-
+    
     font-size: 18px;
    
 
 }
 
 .button1:hover {
-    background: #DCDCDC;
-    color: #cad1de;
+    background: #ececec;
+    
 }
 

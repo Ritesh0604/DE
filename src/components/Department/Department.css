@@ -4,12 +4,15 @@
     justify-content: space-between;
     
 }
+
+
+.Department{
+    font-family:serif;
+}
 .q{
     display: flex;
 }
-.allfaculty{
- 
-}
+
 .faculty-photo{
     margin-top: 10%;
     margin-left: auto;

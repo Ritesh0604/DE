@@ -44,7 +44,7 @@ const ModalOverlay = (props) => {
 
 
             <footer className={classes.actions}>
-                <Button onClick={props.onConfirm}>Close</Button>
+                <Button  onClick={props.onConfirm}>Close</Button>
                 {cookies.email && <Link to="edit" > <Button className="d-flex submit btn btn-outline-success mx-4" type="submit">Edit</Button></Link>}
                 {/* {cookies.email && <Button className="d-flex submit btn btn-outline-success mx-4"
                 onClick={props.onEdit}    type="submit">Edit</Button>} */}

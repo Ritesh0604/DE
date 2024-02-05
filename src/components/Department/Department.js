@@ -52,15 +52,15 @@ const Department = (props) => {
     };
     const list = faculties.map((faculty) => {
         return (
-            <div className="card " style={{ width: "18rem" }} key={faculty._id}>
+            <div className="card" style={{ width: "18rem",margin:"5px" }} key={faculty._id}>
                 <img src="/jrd.png" className="card-img-top faculty-photo" alt="jrd" />
                 <div className="card-body">
                     <h5 className="card-title faculty-name text-center">
                         {faculty.fullName}
                     </h5>
-                    <p className="card-text">{faculty.notes}</p>
+                    <p className="card-text text-center">{faculty.notes}</p>
                     <div className="button text-center">
-                        <Button onClick={(event) => showHandler(event, faculty)}>click me</Button>
+                        <Button onClick={(event) => showHandler(event, faculty)}>See Detail</Button>
                     </div>
                 </div>
             </div>
@@ -96,8 +96,9 @@ const Department = (props) => {
     // console.log(show);
     return (
         <Wrapper>
-            <h1>Department Page</h1>
-            <div>{list}</div>
+          <div className="m-3">
+            <h1 className="Department text-center m-5">Department Page</h1>
+            <div style={{display:"flex"}}>{list}</div>
             {show && (
                 <FacultyViewModal
                     name={show.name}
@@ -109,6 +110,7 @@ const Department = (props) => {
                     onDelete={deleteData}
                 />
             )}
+            </div>
         </Wrapper>
     );
 };

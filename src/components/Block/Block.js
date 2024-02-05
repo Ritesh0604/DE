@@ -31,7 +31,7 @@ const Block = () => {
     ));
     return (
         <div className="cleck">
-            <h3 className="text" >Select Department Block</h3>
+            <h2 className="text" >Select Department Block</h2>
             <div className="row">{listt}</div>
         </div>
     );

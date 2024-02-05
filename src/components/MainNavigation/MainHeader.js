@@ -13,19 +13,20 @@ const MainHeader = (props) => {
     // },[checkval,cookies.email])
        // console.log(cookies.email);
     return (
-        <header>
-            <div className=" header1 p-0 d-flex justify-content-evenly   ">
+        <header className="fixed-top">
+            <div className=" header1 p-0 d-flex  px-3  ">
 
                 <div className="  d-flex headpart ">
                     <img
                         src="logo.png"
                         alt="vishwakarma"
-                        style={{ height: "100%", width: "7%" }}
+                        style={{ height: "40%", width: "10%" }}
                     />
 
-                    <h3 className=" p-2 align-items-center head ">
-                        Vishwakarama Government Engineering College
-                    </h3>
+                    <div className=" p-1 align-items-center head ">
+                       <h3> Vishwakarama Government Engineering College</h3>
+                       <p>Chandkheda, Gujarat</p>
+                    </div>
                 </div>
 
                 <div className="   d-flex align-items-center absolute ">
